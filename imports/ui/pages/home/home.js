@@ -1,4 +1,4 @@
 import './home.html';
 
-import '../../components/hello/hello.js';
-import '../../components/info/info.js';
+import '../../components/contact-list/contact-list.js';
+import '../../components/message-box/message-box.js';
