@@ -14,3 +14,11 @@ Template.contactList.helpers({
     return Meteor.users.find();
   },
 });
+
+Template.contactList.events({
+  'click .contact': function(e, instance) {
+    const contactName = e.target.getAttribute('name');
+    const contactId = e.target.getAttribute('id');
+    console.log(`contact name: ${contactName} ID: ${contactId}`);
+  },
+});

@@ -8,3 +8,6 @@
   text-decoration: none;
   list-style: none;
 }
+.contact-list ul li:hover{
+  background-color: #fff;
+}
