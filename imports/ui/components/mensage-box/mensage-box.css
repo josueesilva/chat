@@ -1,5 +1,7 @@
 .mensage-box {
+  background-color: #f6f6f6;
   text-align: right;
+  height: 100%;
   margin: 0 0 0 0;
   padding:0 0 0 0;
 }

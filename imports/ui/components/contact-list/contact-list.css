@@ -1,8 +1,10 @@
 .contact-list{
   float:left;
   background-color: #f2f2f2;
+  height: 100%;
 }
-.contact-list ul li
+.contact-list ul
 {
   text-decoration: none;
+  list-style: none;
 }
