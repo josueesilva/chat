@@ -1,8 +1,8 @@
 <template name="contactList">
-  <div class="contact-list col-md-3 bg-primary pull-left">
+  <div class="contact-list col-md-3">
     <ul>
     {{#each users}}
-      <li>{{username}}</li>
+      <li class="contact" id="{{_id}}">{{username}}</li>
     {{/each}}
     </ul>
   </div>

@@ -1,4 +1,9 @@
-.page-header{
-  background-color: #2E2D88;
-  color:white;
+.login-buttons {
+  text-align:right;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+.pageheader {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
 }

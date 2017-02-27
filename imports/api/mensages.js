@@ -13,7 +13,7 @@ MensagesSchema = new SimpleSchema({
   conversationId:{
     type:String,
   },
-  Mensagem:{
+  mensagem:{
     type: String,
     label: 'Mensagem'
   },

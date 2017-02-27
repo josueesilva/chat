@@ -1,4 +1,5 @@
 import './contact-list.html';
+import './contact-list.css';
 
 Template.contactList.onCreated(function () {
   self = this;
@@ -9,7 +10,7 @@ Template.contactList.onCreated(function () {
 
 
 Template.contactList.helpers({
-  users:() => {
+  users() {
     return Meteor.users.find();
   },
 });
