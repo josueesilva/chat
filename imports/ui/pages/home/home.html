@@ -1,4 +1,6 @@
 <template name="home">
-      {{> contactList}}
+  {{#if currentUser}}
+    {{> contactList}}
     {{> mensageBox}}
+  {{/if}}
 </template>
