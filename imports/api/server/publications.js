@@ -1,8 +1,8 @@
-// All links-related publications
 
 import { Meteor } from 'meteor/meteor';
-import { Links } from '../links.js';
+import { Conversations } from '../conversations.js';
+import { Mensages } from '../mensages.js';
 
-Meteor.publish('links.all', function () {
-  return Links.find();
+Meteor.publish('Mensages.all', function () {
+  return Mensages.find();
 });
