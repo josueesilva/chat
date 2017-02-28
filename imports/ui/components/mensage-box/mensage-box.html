@@ -1,10 +1,15 @@
 <template name="mensageBox">
 <div class="mensage-box">
-  <div class="display-mensage">
-    Mensagens
-  </div>
-  <div class="send-mensage-control">
-    Envio Mensagem
-  </div>
+  {{#if existConverse}}
+    <div class="display-mensage">
+      Mensagens
+    </div>
+    <div class="send-mensage-control">
+      <div class="form-inline">
+        <input class="form-control" id="mensage" placeholder="Mensage">
+        <button class="btn btn-primary">Enviar</button>
+      </div>
+    </div>
+  {{/if}}
 </div>
 </template>

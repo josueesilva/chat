@@ -6,3 +6,13 @@
   margin: 0 0 0 0;
   padding:0 0 0 0;
 }
+.display-mensage{
+  height: 80%;
+  padding-right: 100px;
+}
+#mensage{
+  width: 55%;
+}
+.send-mensage-control {
+  padding-right: 20px;
+}
