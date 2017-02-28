@@ -1,19 +1,23 @@
-// Methods related to links
-
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
-import { Conversations } from './conversations.js';
-import { Mensages } from './mensages.js';
 
 Meteor.methods({
-  // 'mensage.insert'(title, url) {
-  //   check(url, String);
-  //   check(title, String);
+  conversationInsert(uId, dId){
+    check(uId, String);
+    check(dId, String);
 
-  //   return Links.insert({
-  //     url,
-  //     title,
-  //     createdAt: new Date(),
-  //   });
-  // },
+    let idConversation;
+
+    const usersIds = [uId, dId];
+    const conversations = Conversations.find({}).fetch().filter(i => {
+      if(_.difference(i.usersIds, usersIds).length < 1) {
+        idConversation = i._id;          
+      } else {
+         idConversation = Conversations.insert({
+          usersIds
+        });
+      }
+    });
+    return idConversation;
+  },
 });

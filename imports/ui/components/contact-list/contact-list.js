@@ -19,6 +19,12 @@ Template.contactList.events({
   'click .contact': function(e, instance) {
     const contactName = e.target.getAttribute('name');
     const contactId = e.target.getAttribute('id');
-    console.log(`contact name: ${contactName} ID: ${contactId}`);
+    Meteor.call('conversationInsert', Meteor.userId(), contactId, function(error, result) {
+      if(error){
+        alert(error);
+      }
+      Session.set("convese", result);
+    });
+    console.log('idConversation:', Session.get("converse"));
   },
 });
