@@ -2,17 +2,15 @@ import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 
 Meteor.methods({
-  conversationInsert(uId, dId){
-    check(uId, String);
+  conversationInsert(dId){
     check(dId, String);
 
     let idConversation;
 
-    const usersIds = [uId, dId];
-    console.log('usersIds', usersIds);
+    const usersIds = [Meteor.userId(), dId];
     const conversations = Conversations.find({}).fetch().filter(i => _.difference(usersIds, i.usersIds).length < 1);
-    console.log(conversations);
-    if(conversations.length > 0){
+    
+    if (conversations.length > 0){
       idConversation = conversations[0]._id;
     } else {
       idConversation = Conversations.insert({
@@ -22,13 +20,20 @@ Meteor.methods({
     
     return idConversation;
   },
-  //  if(_.difference(i.usersIds, usersIds).length < 1) {
-  //       idConversation = i._id;          
-  //     } else {
-  //        idConversation = Conversations.insert({
-  //         usersIds
-  //       });
-  //       console.log('i.usersIds', i.usersIds);
-  //       console.log('usersIds', usersIds);
-  //     }
+  mensageSend(idC, mensage) {
+    check(idC, String);
+    check(mensage, String);
+
+    Mensages.insert({
+      userName: Meteor.user().username,
+      userId: Meteor.userId(),
+      conversationId: idC,
+      mensagem: mensage
+    });
+  },
+  listMensages(idC) {
+    check(idC, String);
+
+    return Mensages.find({conversationId: idC}).fetch();
+  }
 });

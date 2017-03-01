@@ -11,7 +11,7 @@ MensagesSchema = new SimpleSchema({
     label:  'Id usuario'
   },
   conversationId:{
-    type:String,
+    type: String,
   },
   mensagem:{
     type: String,

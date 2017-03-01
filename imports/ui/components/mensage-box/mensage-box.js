@@ -1,23 +1,29 @@
 import './mensage-box.html';
 import './mensage-box.css';
-// import {ReactiveDict} from 'meteor/reactive-dict';
-
-Template.mensageBox.onCreated(function(){
-  // this.idC = new ReactiveDict();
-  // this.idC.set('data', Session.get('converse'));  
-});
 
 Template.mensageBox.helpers({
-  existConverse(){
-    // console.log('testeidC', this.idC.get('data'));
-    console.log('session:', Session.get('converse'));
+  existConverse() {
     return Session.get('converse');
   },
+  mensages() {
+    Meteor.call('listMensages', Session.get('converse'), (error, result) => {
+      if(error){
+        return alert(error);        
+      }     
+      Session.set('listMensages',result);
+    });
+    return Session.get('listMensages');
+  }
 });
 
 Template.mensageBox.events({
   'click .btn-primary': function(e, instance) {
     let mensage = instance.find('#mensage').value;
-    console.log(mensage);
+    Meteor.call('mensageSend', Session.get('converse'), mensage, (error) => {
+        if(error) {
+          return alert(error);
+        }
+        instance.find('#mensage').value = "";
+    });
   },
 });
