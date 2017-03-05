@@ -1,18 +1,24 @@
 import './mensage-box.html';
 import './mensage-box.css';
+import Mensages from '../../../api/mensages.js';
+
+Template.mensageBox.onCreated(function () {
+  self = this;
+  self.autorun(function() {
+      const subMensages = self.subscribe("mensages", Session.get('converse'));
+      console.log('lalala',subMensages);
+      console.log(subMensages.ready());
+  });
+});
 
 Template.mensageBox.helpers({
   existConverse() {
     return Session.get('converse');
   },
   mensages() {
-    Meteor.call('listMensages', Session.get('converse'), (error, result) => {
-      if(error){
-        return alert(error);        
-      }     
-      Session.set('listMensages',result);
-    });
-    return Session.get('listMensages');
+    console.log('dad',Mensages.find({conversationId: Session.get('converse')}).fetch());
+    return Mensages.find({conversationId: Session.get('converse')}).fetch();
+    // return Session.get('listMensages');
   }
 });
 

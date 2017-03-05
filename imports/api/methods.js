@@ -1,5 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
+import Conversations from './conversations.js';
+import Mensages from './mensages.js';
 
 Meteor.methods({
   conversationInsert(dId){
@@ -8,10 +10,17 @@ Meteor.methods({
     let idConversation;
 
     const usersIds = [Meteor.userId(), dId];
-    const conversations = Conversations.find({}).fetch().filter(i => _.difference(usersIds, i.usersIds).length < 1);
+    console.log(usersIds);
     
+    const conversations = Conversations.find({usersIds: usersIds}).fetch();
+    const conversations2 = Conversations.find({usersIds: usersIds.reverse()}).fetch();
+    
+    console.log('length', conversations.length);
+    console.log('usersIds', usersIds);
     if (conversations.length > 0){
       idConversation = conversations[0]._id;
+    } else if(conversations2.length) {
+      idConversation = conversations2[0]._id;
     } else {
       idConversation = Conversations.insert({
         usersIds

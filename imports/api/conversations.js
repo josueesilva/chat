@@ -1,6 +1,6 @@
-
 import { Mongo } from 'meteor/mongo';
-Conversations = new Mongo.Collection('conversations');
+
+const Conversations = new Mongo.Collection('conversations');
 
 Conversations.allow({
   insert(userId, doc){
@@ -8,14 +8,18 @@ Conversations.allow({
   }
 });
 
-UserId = new SimpleSchema({
+const UserId = new SimpleSchema({
   userId: {
     type: String,
   }
 });
 
-ConversationsSchema = new SimpleSchema({
+const ConversationsSchema = new SimpleSchema({
   usersIds: {
-    type: [UserId],
+    type: [String],
   }
 });
+
+Conversations.attachSchema(ConversationsSchema);
+
+export default Conversations;

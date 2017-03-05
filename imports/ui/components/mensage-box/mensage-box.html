@@ -2,9 +2,13 @@
 <div class="mensage-box">
   {{#if existConverse}}
     <div class="display-mensage">
+      <ul>
       {{#each mensages}}
+      <li>
        {{dateSend}} - {{userName}} - {{mensagem}}
+       </li>
       {{/each}}
+      </ul>
     </div>
     <div class="send-mensage-control">
       <div class="form-inline">

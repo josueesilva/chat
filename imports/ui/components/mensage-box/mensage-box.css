@@ -10,6 +10,10 @@
   height: 80%;
   padding-right: 100px;
 }
+.display-mensage ul li{
+  list-style: none;
+  text-decoration: none;
+}
 #mensage{
   width: 55%;
 }

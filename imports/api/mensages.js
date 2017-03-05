@@ -1,7 +1,8 @@
 import { Mongo } from 'meteor/mongo';
-Mensages = new Mongo.Collection('mensages');
 
-MensagesSchema = new SimpleSchema({
+const Mensages = new Mongo.Collection('mensages');
+
+const MensagesSchema = new SimpleSchema({
   userName: {
     type: String,
     label: 'user name'
@@ -27,3 +28,5 @@ MensagesSchema = new SimpleSchema({
 });
 
 Mensages.attachSchema(MensagesSchema);
+
+export default Mensages;
